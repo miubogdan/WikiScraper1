@@ -34,12 +34,10 @@ def dataframe(company_data):
     df = pd.DataFrame(company_data)
     return df
 
-if __name__ == "__main__":
-    ftse_url = 'https://en.wikipedia.org/wiki/FTSE_100_Index'
-    company_links = get_company_links(ftse_url)
-    company_data = [extract_company_info(name, url) for name, url in company_links.items()]
-    df = dataframe(company_data)
+ftse_url = 'https://en.wikipedia.org/wiki/FTSE_100_Index'
+company_links = get_company_links(ftse_url)
+company_data = [extract_company_info(name, url) for name, url in company_links.items()]
+df = dataframe(company_data)
 
-    # Pt caractere speciale
-    df.to_csv('ftse_100_company_info.csv', index=False, encoding='utf-8-sig')
-    print(df.head())
+df.to_csv('ftse_100_company_info.csv')
+print(df.head())
